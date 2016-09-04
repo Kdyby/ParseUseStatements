@@ -1,0 +1,41 @@
+{
+	"name": "kdyby/parse-use-statements",
+	"type": "library",
+	"description": "Parse use statements for a reflection object",
+	"keywords": ["kdyby", "use", "uses", "usages", "import", "statement", "parse", "expand", "class", "reflection"],
+	"homepage": "http://kdyby.org",
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+		{
+			"name": "David Grudl",
+			"homepage": "https://davidgrudl.com"
+		},
+		{
+			"name": "Nette Community",
+			"homepage": "https://nette.org/contributors"
+		},
+		{
+			"name": "Filip Procházka",
+			"homepage": "http://filip-prochazka.com",
+			"email": "filip@prochazka.su"
+		}
+	],
+	"support": {
+		"email": "filip@prochazka.su",
+		"issues": "https://github.com/Kdyby/ParseUseStatements/issues"
+	},
+	"require": {
+		"php": ">=5.4"
+	},
+	"require-dev": {
+		"nette/tester": "~1.7"
+	},
+	"autoload": {
+		"psr-4": {
+			"Kdyby\\ParseUseStatements\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"classmap": ["tests"]
+	}
+}
