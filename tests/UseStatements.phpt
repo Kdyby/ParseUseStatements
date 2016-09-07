@@ -9,6 +9,8 @@ require __DIR__ . '/files/noNamespace.php';
 require __DIR__ . '/files/bracketedNamespace.php';
 require __DIR__ . '/files/inNamespace.php';
 require __DIR__ . '/files/twoBlocks.php';
+require __DIR__ . '/files/groupUse.php';
+
 
 $rcNoNamespace = new \ReflectionClass('NoNamespace');
 $rcBTest = new \ReflectionClass('BTest');
@@ -121,4 +123,9 @@ Assert::same(
 Assert::same(
 	[],
 	UseStatements::getUseStatements(new ReflectionClass('stdClass'))
+);
+
+Assert::same(
+	['A' => 'A\B\A', 'C' => 'A\B\B\C', 'D' => 'A\B\C', 'E' => 'D\E'],
+	UseStatements::getUseStatements(new ReflectionClass('GroupUseTest'))
 );
