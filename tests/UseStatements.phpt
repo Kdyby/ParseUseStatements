@@ -9,7 +9,6 @@ require __DIR__ . '/files/noNamespace.php';
 require __DIR__ . '/files/bracketedNamespace.php';
 require __DIR__ . '/files/inNamespace.php';
 require __DIR__ . '/files/twoBlocks.php';
-require __DIR__ . '/files/nonClassUse.php';
 
 
 $rcNoNamespace = new \ReflectionClass('NoNamespace');
@@ -123,9 +122,4 @@ Assert::same(
 Assert::same(
 	[],
 	UseStatements::getUseStatements(new ReflectionClass('stdClass'))
-);
-
-Assert::same(
-	[],
-	UseStatements::getUseStatements(new ReflectionClass('NonClassUseTest'))
 );
