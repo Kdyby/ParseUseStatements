@@ -94,12 +94,14 @@ class UseStatements
 		$tokens = token_get_all($code);
 		$namespace = $class = $classLevel = $level = NULL;
 		$res = $uses = [];
+
 		while (list(, $token) = each($tokens)) {
 			switch (is_array($token) ? $token[0] : $token) {
 				case T_NAMESPACE:
 					$namespace = ltrim(self::fetch($tokens, [T_STRING, T_NS_SEPARATOR]) . '\\', '\\');
 					$uses = [];
 					break;
+
 				case T_CLASS:
 				case T_INTERFACE:
 				case T_TRAIT:
@@ -112,11 +114,13 @@ class UseStatements
 						}
 					}
 					break;
+
 				case T_USE:
 					while (!$class && ($name = self::fetch($tokens, [T_STRING, T_NS_SEPARATOR]))) {
 						$name = ltrim($name, '\\');
 						if (self::fetch($tokens, T_AS)) {
 							$uses[self::fetch($tokens, T_STRING)] = $name;
+
 						} else {
 							$tmp = explode('\\', $name);
 							$uses[end($tmp)] = $name;
@@ -126,11 +130,13 @@ class UseStatements
 						}
 					}
 					break;
+
 				case T_CURLY_OPEN:
 				case T_DOLLAR_OPEN_CURLY_BRACES:
 				case '{':
 					$level++;
 					break;
+
 				case '}':
 					if ($level === $classLevel) {
 						$class = $classLevel = NULL;
@@ -138,6 +144,7 @@ class UseStatements
 					$level--;
 			}
 		}
+
 		return $res;
 	}
 
